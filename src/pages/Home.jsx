@@ -1,10 +1,11 @@
-import React from 'react'
+import Header from '../components/Header'
 import Menubar from '../components/Menubar'
 
 const Home = () => {
     return (
-        <div>
+        <div className='flex flex-col align-items-center justify-content-center min-vh-100'>
             <Menubar/>
+            <Header />
         </div>
     )
 }
