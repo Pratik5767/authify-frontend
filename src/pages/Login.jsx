@@ -12,7 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const { backendUrl } = useContext(AppContext);
+    const { backendUrl, setIsLoggedIn } = useContext(AppContext);
     const navigate = useNavigate();
 
     const onSubmitHandler = async (e) => {
@@ -32,7 +32,14 @@ const Login = () => {
                 }
             } else {
                 // login api
-
+                const response = await axios.post(`${backendUrl}/login`, { email, password });
+                if (response.status === 200) {
+                    setIsLoggedIn(true);
+                    navigate("/");
+                    toast.success("User login successfull")
+                } else {
+                    toast.error("Invalid Credentials");
+                }
             }
         } catch (error) {
             toast.error(error.response.data.message);
