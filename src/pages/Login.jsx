@@ -37,6 +37,7 @@ const Login = () => {
                     setIsLoggedIn(true);
                     getUserData();
                     navigate("/");
+                    toast.success("User login successfully");
                 } else {
                     toast.error("Invalid Credentials");
                 }

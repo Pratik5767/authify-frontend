@@ -31,9 +31,25 @@ const Menubar = () => {
                 setIsLoggedIn(false);
                 setUserData(false);
                 navigate("/")
+                toast.success("User loggedOut successfully");
             }
         } catch (error) {
             toast.error(error.response.data.message);
+        }
+    }
+
+    const sendVerificationOtp = async () => {
+        try {
+            axios.defaults.withCredentials = true;
+            const response = await axios.post(`${backendUrl}/send-otp`);
+            if (response.status === 200) {
+                navigate("/email-verify");
+                toast.success("OTP has been send successfully");
+            } else {
+                toast.error("Unable to send OTP");
+            }
+        } catch (error) {
+            toast.error(error.data.message);
         }
     }
 
@@ -62,7 +78,7 @@ const Menubar = () => {
                                 <div className="position-absolute shadow bg-white rounded p-2" style={{ top: "50px", right: 0, zIndex: 100 }}>
                                     {
                                         !userData.isAccountVerified && (
-                                            <div className="dropdown-item py-1 px-2" style={{ cursor: "pointer" }}>
+                                            <div onClick={sendVerificationOtp} className="dropdown-item py-1 px-2" style={{ cursor: "pointer" }}>
                                                 Verify email
                                             </div>
                                         )

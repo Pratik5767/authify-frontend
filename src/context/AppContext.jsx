@@ -17,7 +17,7 @@ export const AppContextProvider = (props) => {
             if (response.status === 200) {
                 setUserData(response.data);
             } else {
-                toast.error("Unable to retrive the proile");
+                toast.error("Unable to retrive the profile");
             }
         } catch (error) {
             toast.error(error.message);
