@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import { assets } from "../assets/assets.js"
-import { useContext, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { AppContext } from "../context/AppContext.jsx";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -61,6 +61,10 @@ const EmailVerify = () => {
             setLoading(false);
         }
     }
+
+    useEffect(() => {
+        isLoggedIn && userData && userData.isAccountVerified && navigate("/");
+    }, [isLoggedIn, userData])
 
     return (
         <div className="vh-100 d-flex align-items-center justify-content-center h-100 position-relative" style={{ background: "linear-gradient(90deg, #6a5af9, #8268f9)", borderRadius: "none" }}>
