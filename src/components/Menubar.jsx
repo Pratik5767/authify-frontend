@@ -31,7 +31,6 @@ const Menubar = () => {
                 setIsLoggedIn(false);
                 setUserData(false);
                 navigate("/")
-                toast.success("User logged Out");
             }
         } catch (error) {
             toast.error(error.response.data.message);

@@ -69,7 +69,8 @@ const EmailVerify = () => {
     return (
         <div className="vh-100 d-flex align-items-center justify-content-center h-100 position-relative" style={{ background: "linear-gradient(90deg, #6a5af9, #8268f9)", borderRadius: "none" }}>
             <Link to="/" className="position-absolute top-0 start-0 p-4 flex align-items-center gap-2 text-decoration-none" style={{ fontSize: "24px" }}>
-                <img src={assets.logo} alt="logo" height={45} width={40} />
+                <img style={{marginTop: -6}} src={assets.logo} alt="logo" height={45} width={50} />
+                
                 <span className="fs-4 fw-semibold text-light">Authify</span>
             </Link>
 
